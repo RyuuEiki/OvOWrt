@@ -54,5 +54,3 @@ if [ -f "$CM_FILE" ]; then
 
 	cd $PKG_PATH && echo "coremark has been fixed!"
 fi
-
-curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
