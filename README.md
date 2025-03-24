@@ -1,19 +1,6 @@
-# OpenWRT-CI
-云编译OpenWRT固件
+# OvOWrt
 
-官方版：
-https://github.com/immortalwrt/immortalwrt.git
-
-高通版：
-https://github.com/VIKINGYFY/immortalwrt.git
-
-# 固件简要说明：
-
-固件每天早上4点自动编译。
-
-固件信息里的时间为编译开始的时间，方便核对上游源码提交时间。
-
-MEDIATEK系列、QUALCOMMAX系列、ROCKCHIP系列、X86系列。
+云编译OpenWRT ROCKCHIP R68s固件
 
 # 目录简要说明：
 
@@ -22,3 +9,12 @@ workflows——自定义CI配置
 Scripts——自定义脚本
 
 Config——自定义配置
+
+# 自用插件
+
+- Nikki
+- SmartDNS
+
+# Tips
+
+- 如需使用opkg安装插件，需在 `系统-软件包-配置OPKG` `/etc/opkg.conf` 中删除 ` option check_signature`，否则会无法更新软件源。
