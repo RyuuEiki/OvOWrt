@@ -1,9 +1,10 @@
-#!/bin/sh  # 严格保持 /bin/sh 兼容性
+#!/bin/sh
+# 严格保持 /bin/sh 兼容性
 
 # 目标配置文件路径
 TARGET_CONFIG="target/linux/rockchip/armv8/config-6.6"
 
-# 配置参数列表（兼容POSIX写法，逐行处理）
+# 配置参数列表（多行字符串，兼容POSIX）
 CONFIG_ENTRIES="
 CONFIG_NETFILTER=y
 CONFIG_SHORTCUT_FE=y
@@ -27,7 +28,7 @@ echo "$CONFIG_ENTRIES" | while read -r entry; do
     # 提取配置键名
     key=$(echo "$entry" | cut -d'=' -f1)
     
-    # 删除旧条目（兼容无 -i 参数的 sed）
+    # 删除旧条目（兼容所有 sed 版本）
     sed "/^$key=/d" "$TARGET_CONFIG" > "${TARGET_CONFIG}.tmp"
     mv "${TARGET_CONFIG}.tmp" "$TARGET_CONFIG"
     
