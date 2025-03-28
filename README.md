@@ -13,7 +13,6 @@ Config——自定义配置
 # 自用插件
 
 - Nikki
-- SmartDNS
 
 # Tips
 
