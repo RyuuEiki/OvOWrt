@@ -165,6 +165,7 @@ jobs:
       - name: Custom Settings
         run: |
           cd ./wrt/
+          ./scripts/feeds install -a -p packages boost-system
 
           cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
           $GITHUB_WORKSPACE/Scripts/Settings.sh
@@ -273,4 +274,4 @@ jobs:
         with:
           tag_name: ${{env.WRT_CONFIG}}_${{env.WRT_VER}}_${{env.WRT_DATE}}
           body_path: ./wrt/release.txt
-          文件: ./wrt/upload/*.*
+          files: ./wrt/upload/*.*
