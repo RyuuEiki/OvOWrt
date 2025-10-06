@@ -181,11 +181,11 @@ jobs:
 
           # 启用编译优化特性
           echo "CONFIG_KERNEL_CLANG_LTO=y" >> .config
-          echo "CONFIG_ENABLE_LTO=y" >> .config
+          # echo "CONFIG_ENABLE_LTO=y" >> .config
           echo "CONFIG_ENABLE_BPF=y" >> .config
-          echo "CONFIG_ENABLE_OTA=y" >> .config
-          echo "CONFIG_USE_GCC15=y" >> .config
-          echo "CONFIG_ENABLE_MOLD=y" >> .config
+          # echo "CONFIG_ENABLE_OTA=y" >> .config
+          # echo "CONFIG_USE_GCC15=y" >> .config
+          # echo "CONFIG_ENABLE_MOLD=y" >> .config
 
           # --- 新增结束 ---
 
