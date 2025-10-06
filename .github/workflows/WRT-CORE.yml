@@ -167,10 +167,30 @@ jobs:
           cd ./wrt/
 
           cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
-
           $GITHUB_WORKSPACE/Scripts/Settings.sh
 
+          # --- 以下为新增部分：系统优化特性 ---
+          # 启用 BBRv3
+          echo "CONFIG_TCP_CONG_BBR=y" >> .config
+          echo "CONFIG_TCP_CONG_BBR2=y" >> .config
+          echo "CONFIG_TCP_CONG_BBR3=y" >> .config
+          echo "CONFIG_DEFAULT_BBR3=y" >> .config
+          echo "CONFIG_NET_SCH_FQ=y" >> .config
+          echo "CONFIG_DEFAULT_FQ=y" >> .config
+
+          # 启用编译优化特性
+          echo "CONFIG_KERNEL_CLANG_LTO=y" >> .config
+          echo "CONFIG_ENABLE_LTO=y" >> .config
+          echo "CONFIG_ENABLE_BPF=y" >> .config
+          echo "CONFIG_ENABLE_OTA=y" >> .config
+          echo "CONFIG_USE_GCC15=y" >> .config
+          echo "CONFIG_ENABLE_MOLD=y" >> .config
+
+          # --- 新增结束 ---
+
           make defconfig -j$(nproc) && make clean -j$(nproc)
+
+
 
       - name: Download Packages
         if: env.WRT_TEST != 'true'
@@ -253,4 +273,4 @@ jobs:
         with:
           tag_name: ${{env.WRT_CONFIG}}_${{env.WRT_VER}}_${{env.WRT_DATE}}
           body_path: ./wrt/release.txt
-          files: ./wrt/upload/*.*
+          文件: ./wrt/upload/*.*
